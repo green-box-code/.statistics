@@ -5,7 +5,7 @@ def mean(arr):
     return sum/len(arr)
 
 def sqrt(x):
-  sqrt_x = x**(1/2)
+    sqrt_x = x**(1/2)
     return sqrt_x
 
 def pearson_correlation(X, Y):
