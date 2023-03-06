@@ -1,33 +1,15 @@
-def pearson_product_moment(data):
-    """Calculate the Pearson product-moment correlation coefficient at a given data.
-    
-    Parameters
-    ----------
-    data : 2d array
-        A 2d array of data points.
-    
-    Returns
-    -------
-    float
-        The Pearson product-moment correlation coefficient.
-    """
-    
-    # calculate mean of data points
-    mean_x = sum(data[0])/len(data[0])
-    mean_y = sum(data[1])/len(data[1])
-    
-    # calculate numerator and denominator
-    numerator = 0
-    denominator_x = 0
-    denominator_y = 0
-    for i in range(len(data[0])):
-        numerator += (data[0][i] - mean_x) * (data[1][i] - mean_y)
-        denominator_x += (data[0][i] - mean_x) ** 2
-        denominator_y += (data[1][i] - mean_y) ** 2
-        
-    denominator = (denominator_x * denominator_y) ** 0.5
-    
-    # calculate Pearson product-moment correlation coefficient
-    r = numerator / denominator
-    
+import numpy as np # <--- Get rid of numpy
+def pearson_correlation(X, Y):
+    mean_X = np.mean(X)
+    mean_Y = np.mean(Y)
+    X_diffs = [x - mean_X for x in X]
+    Y_diffs = [y - mean_Y for y in Y]
+    sum_X_diffs_sq = sum([x ** 2 for x in X_diffs])
+    sum_Y_diffs_sq = sum([y ** 2 for y in Y_diffs])
+    sum_XY_diffs = sum([x * y for (x, y) in zip(X_diffs,Y_diffs)])
+    r = sum_XY_diffs / (np.sqrt(sum_X_diffs_sq) * np.sqrt(sum_Y_diffs_sq))
     return r
+
+X = [1,2,3,4,4,4,5,6,7]
+Y = [1,2,3,3,3,3,5,5,6]
+print(pearson_correlation(X,Y))
