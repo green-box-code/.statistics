@@ -1,12 +1,18 @@
 def mean(arr):
+    """ Find the mean value of an array """
     sum = 0
     for i in range(len(arr)):
         sum += arr[i]
     return sum/len(arr)
 
 def sqrt(x):
-    sqrt_x = x**(1/2)
-    return sqrt_x
+    """ Find the positive square root of a value """
+    if x > 0:
+        sqrt_x = x**(1/2)
+        return sqrt_x
+    elif:
+        print("The value must be positive")
+        
 
 def pearson_correlation(X, Y):
     mean_X = mean(X)
